@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './Button.module.css';
 
 function Button({ addImages }) {
@@ -7,5 +8,9 @@ function Button({ addImages }) {
     </button>
   );
 }
+
+Button.protoType = {
+  addImages: PropTypes.func,
+};
 
 export default Button;

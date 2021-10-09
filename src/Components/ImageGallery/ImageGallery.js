@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem';
 import RequestAPI from '../../services/apiService';
 import Loader from '../Loader';
@@ -38,6 +39,10 @@ class ImageGallery extends React.Component {
     this.setState({ status: 'pending' });
 
     newRequestAPI.getData().then(result => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
       return this.setState(prevState => {
         return {
           images: [...prevState.images, ...result.hits],
@@ -45,10 +50,11 @@ class ImageGallery extends React.Component {
         };
       });
     });
-
-    // window.scrollTo({
-    //   top: document.documentElement.scrollHeight,
-    //   behavior: 'smooth',
+    // .finally(() => {
+    //   window.scrollTo({
+    //     top: document.documentElement.scrollHeight,
+    //     behavior: 'smooth',
+    //   });
     // });
   };
 
@@ -87,5 +93,9 @@ class ImageGallery extends React.Component {
     }
   }
 }
+
+ImageGallery.protoType = {
+  searchValue: PropTypes.string,
+};
 
 export default ImageGallery;

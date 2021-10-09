@@ -6,3 +6,17 @@
 
   color: #ccc;
 }
+
+.link {
+  display: block;
+  margin-top: 14px;
+
+  font-size: 12px;
+  text-align: center;
+
+  color: #000;
+}
+
+.link:hover {
+  color: #2196f3;
+}
