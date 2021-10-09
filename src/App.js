@@ -7,7 +7,7 @@ import ImageGallery from './Components/ImageGallery';
 
 class App extends React.Component {
   state = {
-    searchValue: null,
+    searchValue: '',
   };
 
   changeSearchValue = value => {

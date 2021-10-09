@@ -1,4 +1,4 @@
-.photo {
+.card {
   height: max-content;
   position: relative;
   margin-left: 20px;
@@ -11,12 +11,39 @@
   transition: transform 200ms linear;
 }
 
-.photo:hover,
-.photo:focus {
+.card:hover,
+.card:focus {
   transform: scale(102%);
 }
 
 .image {
   width: 100%;
   padding: 0px;
+}
+
+.stats {
+  width: 100%;
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  transform: translateY(-120%);
+  transition: transform 200ms linear;
+}
+
+.card:hover .stats,
+.card:focus .stats {
+  transform: translateY(0%);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+}
+
+.icons {
+  margin-right: 2px;
 }

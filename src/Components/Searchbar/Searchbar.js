@@ -4,17 +4,17 @@ import s from './Searchbar.module.css';
 
 class Searchbar extends React.Component {
   state = {
-    value: null,
+    value: '',
   };
 
   handleChange = event => {
-    this.setState({ value: event.currentTarget.value.toLowerCase() });
+    this.setState({ value: event.currentTarget.value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state.value);
+    this.props.onSubmit(this.state.value.trim().toLowerCase());
   };
 
   render() {
@@ -24,8 +24,8 @@ class Searchbar extends React.Component {
           <input
             className={s.input}
             type="text"
-            autocomplete="off"
-            autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images..."
             onChange={this.handleChange}
             value={this.state.value}
