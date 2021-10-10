@@ -38,24 +38,24 @@ class ImageGallery extends React.Component {
   addImages = () => {
     this.setState({ status: 'pending' });
 
-    newRequestAPI.getData().then(result => {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: 'smooth',
+    newRequestAPI
+      .getData()
+      .then(result => {
+        this.setState(prevState => {
+          return {
+            images: [...prevState.images, ...result.hits],
+            status: 'resolved',
+          };
+        });
+      })
+      .finally(() => {
+        setTimeout(() => {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
+        }, 400);
       });
-      return this.setState(prevState => {
-        return {
-          images: [...prevState.images, ...result.hits],
-          status: 'resolved',
-        };
-      });
-    });
-    // .finally(() => {
-    //   window.scrollTo({
-    //     top: document.documentElement.scrollHeight,
-    //     behavior: 'smooth',
-    //   });
-    // });
   };
 
   render() {
